@@ -1,0 +1,85 @@
+body{
+	width: 100%;
+}
+
+div.form-container{
+	padding: 10px;
+}
+
+div.form-container.heb{
+	direction: rtl;
+}
+
+.field-header{
+	width: 150px;
+	display: inline-block;
+	vertical-align: top;
+}
+
+div.field-container{
+	margin: 10px 0;
+}
+
+div.form-container input[type='text']{
+	margin-bottom:0;
+	width:400px;
+}
+
+div.form-container textarea[type='text']{
+	vertical-align: top;
+	margin-bottom: 0;
+	width: 400px;
+	height: 100px;
+	resize: none;
+}
+
+div.btn-group, div.form-horizontal>*{
+	direction: ltr;
+}
+
+div.datepicker{
+	display: inline-block;
+}
+
+div.form-container input[type='text'].datepicker-input{
+	width: 360px;
+}
+
+div.datepicker.input-prepend>button.btn{
+	border-bottom-left-radius: 4px;
+	border-top-left-radius: 4px;
+}
+
+.image-field{
+	width: 300px;
+	height: 300px;
+}
+
+.image-field{
+	width: 412px;
+	height: 200px;
+	display:inline-block;
+}
+
+.dropzone {
+  width: 412px;
+  height: 200px;
+  border: 1px solid #ccc;
+  text-align: center;
+  font-family: Arial;
+  position:absolute;
+}
+
+.image-container {
+    text-align:center;
+}
+
+.image-container img {
+   max-width: 100%;   
+   max-height: 100%;  
+   margin-top: 1px;
+}
+
+.file-name {
+   font-family: Arial;   
+}

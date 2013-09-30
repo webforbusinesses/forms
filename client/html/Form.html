@@ -1,0 +1,53 @@
+﻿<!doctype html>
+<html ng-app="formmaker">
+	<TITLE>Form Maker</TITLE>
+	<head>
+		<script src="../js/jquery-1.10.2.min.js"></script>
+		<script src="../js/angular/angular.min.js"></script>
+		<script src="../js/angular/ui-bootstrap-tpls-0.5.0.min.js"></script>
+		<script src="../js/myDirectives.js"></script>
+		<script src="../js/myControllers.js"></script>
+		<link rel="stylesheet" TYPE="text/css" href="../skins/skin.css">
+		<link href="../skins/bootstrap.css" rel="stylesheet">
+		
+	</head>
+
+	<body>
+
+		<div class ="form-container heb" ng-controller="MyHebForm">
+		
+			<h3>דו"ח עבור - {{fields[0].content}} {{fields[1].content}}  >> {{fields[5].selected}}</h3>
+			<form>
+				<div ng-repeat="field in fields" ng-switch on="field.type" class="field-container"> 
+					
+					<short-text ng-switch-when="shorttextfield" fieldname='field.fieldname' placeholder='field.placeholder' model='field.content'></short-text>
+					<long-text ng-switch-when="longtextfield" fieldname='field.fieldname' placeholder='field.placeholder' model='field.content'></long-text>
+					<buttons-radio ng-switch-when="radiobuttons" fieldname='field.fieldname' data-toggle="buttons-radio" model='field.selected' options='field.options'></buttons-radio>
+					<checkboxses ng-switch-when="checkboxses" fieldname='field.fieldname' data-toggle="buttons-radio" model='field.selected' options='field.options'></checkboxses>
+					<image-container ng-switch-when="image" fieldname='field.fieldname' file-dropzone="[image/png, image/jpeg, image/gif]" file="fields[7].image" file-name="fields[7].imageFileName" data-max-file-size="10"></image-container>
+					<date ng-switch-when="date" fieldname='field.fieldname' model='field.date'></date>
+					
+				</div>
+			</form>
+			
+						
+				
+			
+		</div>
+		<hr></hr>
+		<div class ="form-container eng" ng-controller="MyEngForm">
+			<h3>Report for - {{fields[0].content}} {{fields[1].content}}</h3>
+			<form>
+				<div ng-repeat="field in fields" ng-switch on="field.type" class="field-container"> 
+					
+					<short-text ng-switch-when="shorttextfield" fieldname='field.fieldname' placeholder='field.placeholder' model='field.content'></short-text>
+					<long-text ng-switch-when="longtextfield" fieldname='field.fieldname' placeholder='field.placeholder' model='field.content'></long-text>
+					<buttons-radio ng-switch-when="radiobuttons" fieldname='field.fieldname' data-toggle="buttons-radio" model='field.selected' options='field.options'></buttons-radio>
+					<checkboxses ng-switch-when="checkboxses" fieldname='field.fieldname' data-toggle="buttons-radio" model='field.selected' options='field.options'></checkboxses>
+					
+				</div>
+			</form>
+		</div>
+		
+	</body>
+</html>
