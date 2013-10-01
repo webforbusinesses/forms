@@ -1,0 +1,24 @@
+{
+    "name": "Forms",
+    "version": "0.0.0",
+    "authors": [
+        "Barak Bar Orion <barak.bar@gmail.com>",
+        "Eran Tomer <erantom@gmail.com>"
+    ],
+    "license": "MIT",
+    "private": true,
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "vendor",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "angular-ui-bootstrap-bower": "*",
+        "bower-bootstrap-css": "*",
+        "jquery": "git://github.com/components/jquery.git#v1.10.2",
+        "angular": "~1.0.8",
+        "angular-mocks": "~1.0.8"
+    }
+}
