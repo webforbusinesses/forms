@@ -1,2 +1,2 @@
 #Build
-1 bower update
+1. bower update
