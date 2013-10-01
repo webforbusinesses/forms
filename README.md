@@ -1,2 +1,3 @@
 #Build
-1. bower update
+1. npm update
+2. bower update

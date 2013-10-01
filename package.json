@@ -1,0 +1,30 @@
+{
+    "name": "Form",
+    "version": "0.0.0",
+    "description": "Collection of angular directives that related to forms",
+    "main": " ",
+    "scripts": {
+        "test": "karma start --single-run --browsers Firefox"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/webforbusinesses/forms.git"
+    },
+    "author": "barak.bar@gmail.com, erantom@gmail.com",
+    "license": "BSD-2-Clause",
+    "bugs": {
+        "url": "https://github.com/WebForBusinesses/forms/issues"
+    },
+    "devDependencies": {
+        "grunt": "~0.4.1",
+        "bower": "~1.2.2",
+        "karma": "~0.10",
+        "grunt-contrib-clean": "~0.5.0",
+        "grunt-contrib-compress": "~0.5.2",
+        "grunt-contrib-connect": "~0.3.0",
+        "grunt-contrib-copy": "~0.4.1",
+        "grunt-shell": "~0.3.1",
+        "grunt-karma": "~0.6.2",
+        "grunt-contrib-jshint": "~0.6.4"
+    }
+}
