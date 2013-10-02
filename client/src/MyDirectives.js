@@ -59,18 +59,6 @@
         };
     };
 
-    // Image
-    ///////////////////////////
-    var imageTemplate = '<div class="field-header">{{fieldname}}:</div>' +
-        '<div class="image-field">' +
-        '<div class="dropzone">' +
-        '</div>' +
-        '<div class="image-container">' +
-        '<img ng-src="{{file}}" />' +
-        //	'<span class="file-name">{{fileName}}</span>' +
-        '</div>' +
-        '</div>';
-
 
     // Date
     ///////////////////////////
@@ -101,13 +89,42 @@
             'starting-day': 1
         };
     };
+	
+	// Time
+    ///////////////////////////
+	
+	var timeTemplate = '<input type="text" class="time" ng-model="model.seconds"/>:' +
+	'<input type="text" class="time" ng-model="model.minutes"/>:' + 
+	'<input type="text" class="time" ng-model="model.hours" />';
+	
+	var timeCtrl = function ($scope, $timeout) {
+        var format = function(x){
+			x = Number(x);
+			return x<10 ? "0" + x : x;
+		};
+		$scope.format= function(){
+			$scope.model.hours = format($scope.model.hours);
+			$scope.model.minutes = format($scope.model.minutes);
+			$scope.model.seconds = format($scope.model.seconds);
+		};
+		$scope.addHour = function(){$scope.model.hours++;};
+		$scope.subHour = function(){$scope.model.hours--;};
+		$scope.addMinute = function(){$scope.model.minutes++;};
+		$scope.subMinute = function(){$scope.model.minutes--;};
+		$scope.addSecond = function(){$scope.model.seconds++;};
+		$scope.subSecond = function(){$scope.model.seconds--;};
+        $scope.toString = function () {
+            return format($scope.model.hours) + ":" +format($scope.model.minutes) + ":" +format($scope.model.seconds);
+        };
+    };
 
     angular.module('formDirectivs', ['ui.bootstrap'])
-        .directive('shortText', formDirectiveFactory(shortTextTemplate))
+		.directive('shortText', formDirectiveFactory(shortTextTemplate))
         .directive('longText', formDirectiveFactory(longTextTemplate))
         .directive('buttonsRadio', formDirectiveFactory(radiobuttonsTemplate, { model: '=', options: '=', fieldname: '='}, radiobuttonsCtrl))
         .directive('checkboxses', formDirectiveFactory(checkboxsTemplate, { model: '=', options: '=', fieldname: '='}, checkboxsCtrl))
-        .directive('date', formDirectiveFactory(dateTemplate, {model: '=', fieldname: '='}, dateCtrl));
+        .directive('date', formDirectiveFactory(dateTemplate, {model: '=', fieldname: '='}, dateCtrl))
+        .directive('time', formDirectiveFactory(timeTemplate, {model: '=', fieldname: '='}, timeCtrl));
     // ToDo use http://www.dropzonejs.com/
 
 })();

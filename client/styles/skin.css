@@ -29,6 +29,11 @@ div.form-container input[type='text']{
 	width:400px;
 }
 
+div.form-container input[type='text'].time{
+	width:20px;
+	text-align:center;
+}
+
 div.form-container textarea[type='text']{
 	vertical-align: top;
 	margin-bottom: 0;
@@ -54,17 +59,6 @@ div.datepicker.input-prepend>button.btn{
 	border-top-left-radius: 4px;
 }
 
-.image-field{
-	width: 300px;
-	height: 300px;
-}
-
-.image-field{
-	width: 412px;
-	height: 200px;
-	display:inline-block;
-}
-
 .dropzone {
   width: 412px;
   height: 200px;
@@ -72,16 +66,6 @@ div.datepicker.input-prepend>button.btn{
   text-align: center;
   font-family: Arial, serif;
   position:absolute;
-}
-
-.image-container {
-    text-align:center;
-}
-
-.image-container img {
-   max-width: 100%;   
-   max-height: 100%;  
-   margin-top: 1px;
 }
 
 .file-name {

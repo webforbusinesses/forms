@@ -11,7 +11,8 @@
             {type: "shorttextfield", fieldname: "מקום עבודה", placeholder: "הזן מקום עבודה...", content: "גפן דקל טכנולוגיות"},
             {type: "radiobuttons", fieldname: "השכלה", options: ["אין", "יסודית", "תיכונית", "תואר ראשון", "תואר שני", "דוקטורט"], selected: "תואר ראשון"},
             {type: "checkboxses", fieldname: "תחביבים", options: ["כדורסל", "כדורגל", "קריאה", "משחקי מחשב"], selected: {"קריאה": true, "משחקי מחשב": true}},
-            {type: "date", fieldname: "תאריך", date: (new Date()).setDate((new Date()).getDate() - 1)}
+            {type: "date", fieldname: "תאריך", date: (new Date()).setDate((new Date()).getDate() - 1)},
+            {type: "time", fieldname: "שעה", time: {hours:1, minutes:2,seconds:54}}
         ];
     });
 
