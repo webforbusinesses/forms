@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" TYPE="text/css" href="../styles/skin.css">
+	<link href="../vendor/bower-bootstrap-css/bootstrap.css" rel="stylesheet">
     <title>login</title>
 </head>
 
 <body>
-<form action="/login" method="post">
+<form class='login' action="/login" method="post">
     <div>
-        <label>Username:</label>
+        <label class='field-header'>Username:</label>
         <input type="text" name="username"/>
     </div>
     <div>
-        <label>Password:</label>
+        <label class='field-header'>Password:</label>
         <input type="password" name="password"/>
     </div>
-    <div>
-        <input type="submit" value="Log In"/>
-    </div>
+    <button class='btn' type="submit">Log In</button>
+	
 </form>
 </body>
 </html>

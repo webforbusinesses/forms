@@ -2,6 +2,10 @@ body{
 	width: 100%;
 }
 
+form.login{
+	padding: 10px;
+}
+
 div.form-container{
 	padding: 10px;
 }
