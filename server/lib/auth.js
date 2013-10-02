@@ -15,6 +15,6 @@ passport.serializeUser(function (user, done) {
     done(null, user.name);
 });
 
-passport.deserializeUser(function (id, done) {
+passport.deserializeUser(function (id, done, err) {
     done(err, {'name': id});
 });
