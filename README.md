@@ -16,7 +16,8 @@ With express browse:
 3. Load models from the DB to the clien and save models from the client
 4. Add express simple login.
 
-Done:
+###Done
+
 1. Added lint grunt target (run with 'grunt lint')
-2. Added Simple express server that serve the form at http://localhost:3000/static/html/Form.html, to run it do npm install and node server/server.js
-3. Added simple login form used with passport hardcoded local auth (in file auth.js) browse to  http://localhost:3000/static/html/login.html user name eran with every password.
+2. Added Simple express server that serve the form at [http://localhost:3000/static/html/Form.html](http://localhost:3000/static/html/Form.html), to run it do npm install and node server/server.js
+3. Added simple login form used with passport hardcoded local auth (in file auth.js) browse to  [http://localhost:3000/static/html/login.html](http://localhost:3000/static/html/login.html) user name eran with every password.
