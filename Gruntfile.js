@@ -7,7 +7,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         jshint: {
-            files: ['Gruntfile.js', 'client/src/**/*.js', 'client/test/**/*.js'],
+            files: ['Gruntfile.js', 'client/src/**/*.js', 'client/test/**/*.js', 'server/**/*.js'],
             options:{
                 curly:true,
                 eqeqeq:true,
@@ -40,5 +40,6 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask('default', ['jshint', 'karma:chrome']);
+    grunt.registerTask('lint', ['jshint']);
 
 };
