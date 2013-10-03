@@ -12,9 +12,9 @@ passport.use(new LocalStrategy(
 ));
 
 passport.serializeUser(function (user, done) {
-    done(null, user.name);
+    done(null, user);
 });
 
-passport.deserializeUser(function (id, done, err) {
-    done(err, {'name': id});
+passport.deserializeUser(function (user, done, err) {
+    done(err, user);
 });

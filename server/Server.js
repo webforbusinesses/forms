@@ -8,7 +8,10 @@ require('./lib/auth.js');
 
 var app = express();
 var server = http.createServer(app);
-require('./lib/routes/static').addRoutes(app, config);
+
+
+
+
 
 
 app.use(express.logger());                                  // Log requests to the console
@@ -18,13 +21,32 @@ app.use(express.cookieSession());                           // Store the session
 app.use(passport.initialize());                             // Initialize PassportJS
 app.use(passport.session());
 
+app.use("/static/html/secure", function(req, res, next){
+    if(req.isAuthenticated()){
+        console.info("user ", req.user, "is authenticated");
+        next();
+    }else{
+        console.info("not Authenticated");
+        res.status(404).send('Not allowed');
+    }
+});
+
+require('./lib/routes/static').addRoutes(app, config);
+
+
+app.get("/", function(req, res){
+    res.redirect('/static/html/index.html');
+});
+
 app.post('/login',
-    passport.authenticate('local', { successRedirect: '/static/html/Form.html'
+    passport.authenticate('local', { successRedirect: '/static/html/secure/index.html'
     })
 );
+
+
 app.use(function(req, res, next) {
     if ( req.user ) {
-        console.log('Current User:', req.user.firstName, req.user.lastName);
+        console.log('Current User:', req.user.name);
     } else {
         console.log('Unauthenticated');
     }
