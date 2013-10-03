@@ -93,9 +93,16 @@
 	// Time
     ///////////////////////////
 	
-	var timeTemplate = '<input type="text" class="time" ng-model="model.seconds"/>:' +
-	'<input type="text" class="time" ng-model="model.minutes"/>:' + 
-	'<input type="text" class="time" ng-model="model.hours" />';
+	var timeTemplate = 
+		'<div class="time-input-container">' + 
+			'<button class="btn" ng-click="addSecond()"><span class="caret horizontal-flip"/></button><input type="text" class="time" ng-model="model.seconds"/>' +
+			'<button class="btn" ng-click="subSecond()"><span class="caret"/></button></div>:' +
+		'<div class="time-input-container">' +
+			'<button class="btn" ng-click="addMinute()"><span class="caret horizontal-flip"/></button><input type="text" class="time" ng-model="model.minutes"/>' +
+			'<button class="btn" ng-click="subMinute()"><span class="caret"/></button></div>:' +
+		'<div class="time-input-container">' +
+			'<button class="btn" ng-click="addHour()"><span class="caret horizontal-flip"/></button><input type="text" class="time" ng-model="model.hours"/>' +
+			'<button class="btn" ng-click="subHour()"><span class="caret"/></button></div>';
 	
 	var timeCtrl = function ($scope, $timeout) {
         var format = function(x){
@@ -107,12 +114,48 @@
 			$scope.model.minutes = format($scope.model.minutes);
 			$scope.model.seconds = format($scope.model.seconds);
 		};
-		$scope.addHour = function(){$scope.model.hours++;};
-		$scope.subHour = function(){$scope.model.hours--;};
-		$scope.addMinute = function(){$scope.model.minutes++;};
-		$scope.subMinute = function(){$scope.model.minutes--;};
-		$scope.addSecond = function(){$scope.model.seconds++;};
-		$scope.subSecond = function(){$scope.model.seconds--;};
+		$scope.addHour = function(){
+			if($scope.model.hours<23){
+				$scope.model.hours++;
+			}
+		};
+		$scope.subHour = function(){
+			if($scope.model.hours>0){
+				$scope.model.hours--;
+			}
+		};
+		$scope.addMinute = function(){
+			if($scope.model.minutes<59){
+				$scope.model.minutes++;
+			} else if($scope.model.hours<23){
+				$scope.addHour();
+				$scope.model.minutes = 0;
+			}
+		};
+		$scope.subMinute = function(){
+			if($scope.model.minutes>0){
+				$scope.model.minutes--;
+			} else if($scope.model.hours>0){
+				$scope.subHour();
+				$scope.model.minutes = 59;
+			}
+		};
+		$scope.addSecond = function(){
+			if($scope.model.seconds<59){
+				$scope.model.seconds++;
+			}else if($scope.model.minutes<59 || $scope.model.hours<23){
+				$scope.model.seconds = 0;
+				$scope.addMinute();
+			}
+		};
+		$scope.subSecond = function(){
+			if($scope.model.seconds>0){
+				$scope.model.seconds--;
+			}else if($scope.model.minutes>0 || $scope.model.hours>0){
+				$scope.model.seconds = 59;
+				$scope.subMinute();
+			}
+		};
         $scope.toString = function () {
             return format($scope.model.hours) + ":" +format($scope.model.minutes) + ":" +format($scope.model.seconds);
         };

@@ -32,6 +32,7 @@ div.form-container input[type='text']{
 div.form-container input[type='text'].time{
 	width:20px;
 	text-align:center;
+	display: block;
 }
 
 div.form-container textarea[type='text']{
@@ -70,4 +71,21 @@ div.datepicker.input-prepend>button.btn{
 
 .file-name {
    font-family: Arial, serif;
+}
+
+div.time-input-container{
+	display: inline-block;
+	vertical-align: middle;
+}
+div.time-input-container>button{
+	width: 34px;
+	height: 16px;
+}
+div.time-input-container>.btn>span{
+	margin-top: 3px;
+}
+
+.horizontal-flip{
+	transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
 }
