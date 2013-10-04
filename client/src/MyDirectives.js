@@ -93,7 +93,7 @@
 	// Time
     ///////////////////////////
 	
-	var timeTemplate = 
+	var timeTemplate = '<span class="time-directive">' +
 		'<div class="time-input-container">' + 
 			'<button class="btn" ng-click="addSecond()"><span class="caret horizontal-flip"/></button><input type="text" class="time" ng-model="model.seconds"/>' +
 			'<button class="btn" ng-click="subSecond()"><span class="caret"/></button></div>:' +
@@ -102,7 +102,8 @@
 			'<button class="btn" ng-click="subMinute()"><span class="caret"/></button></div>:' +
 		'<div class="time-input-container">' +
 			'<button class="btn" ng-click="addHour()"><span class="caret horizontal-flip"/></button><input type="text" class="time" ng-model="model.hours"/>' +
-			'<button class="btn" ng-click="subHour()"><span class="caret"/></button></div>';
+			'<button class="btn" ng-click="subHour()"><span class="caret"/></button></div>' + 
+			'</span>';
 	
 	var timeCtrl = function ($scope, $timeout) {
         var format = function(x){

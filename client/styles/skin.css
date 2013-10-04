@@ -29,12 +29,6 @@ div.form-container input[type='text']{
 	width:400px;
 }
 
-div.form-container input[type='text'].time{
-	width:20px;
-	text-align:center;
-	display: block;
-}
-
 div.form-container textarea[type='text']{
 	vertical-align: top;
 	margin-bottom: 0;
@@ -72,18 +66,39 @@ div.datepicker.input-prepend>button.btn{
 .file-name {
    font-family: Arial, serif;
 }
-
+/* Time directive */
+span.time-directive{
+	display: inline-block;
+}
+span.time-directive input[type='text']{
+	width:20px;
+	text-align:center;
+	display: block;
+	margin-top: -2px;
+	border-radius:0;
+	-webkit-box-shadow:none;
+	-box-shadow:none;
+}
 div.time-input-container{
 	display: inline-block;
 	vertical-align: middle;
+	margin: 0 2px;
 }
 div.time-input-container>button{
 	width: 34px;
 	height: 16px;
 }
+div.time-input-container>button:first-child{
+	border-radius: 4px 4px 0 0;
+}
+div.time-input-container>button:last-child{
+	margin-top: -8px;
+	border-radius: 0 0 4px 4px;
+}
 div.time-input-container>.btn>span{
 	margin-top: 3px;
 }
+/* Time directive END*/
 
 .horizontal-flip{
 	transform: rotate(180deg);
