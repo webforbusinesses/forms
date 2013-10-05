@@ -1,0 +1,33 @@
+<div>
+    <button class="btn btn-primary" type="button" ng-click="add()">add</button>
+    <label>
+        <input placeholder="What needs to be done?" ng-model="newTodo">
+    </label>
+    <ul>
+        <li ng-repeat="todo in todo.items">{{todo.name}}</li>
+    </ul>
+    <div>todo</div>
+    <div>{{todo|json}}</div>
+    <div>newItem</div>
+    <div>{{newTodo|json}}</div>
+
+    <hr>
+
+    <form class='login' ng-show="showLogin">
+        <div>
+            <label class='field-header'>Username:</label>
+            <input type="text" name="username" ng-model="username"/>
+        </div>
+        <div>
+            <label class='field-header'>Password:</label>
+            <input type="password" name="password" ng-model="password"/>
+        </div>
+        <button class='btn' type="submit" ng-click="login()">Log In</button>
+    </form>
+
+    <div>current user {{currentUser|json}}</div>
+
+    <button class="btn btn-primary" type="button" ng-click="refreshCurrentUser()">refreshCurrentUser</button>
+    <button class="btn btn-primary" type="button" ng-click="logout()">logout</button>
+
+</div>

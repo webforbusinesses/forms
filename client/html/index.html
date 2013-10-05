@@ -1,21 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" ng-app="app">
 <head>
+    <script src="../vendor/jquery/jquery.js"></script>
+    <script src="../vendor/angular/angular.min.js"></script>
+    <script src="../vendor/angular-ui-bootstrap-bower/ui-bootstrap-tpls.min.js"></script>
+    <script src="../src/app/app.js"></script>
+    <script src="../src/app/HttpAuthInterceptor.js"></script>
+    <script src="../src/app/directives/navPills.js"></script>
     <link rel="stylesheet" TYPE="text/css" href="../styles/skin.css">
     <link href="../vendor/bower-bootstrap-css/bootstrap.css" rel="stylesheet">
     <title>main</title>
 </head>
 <body>
-<ul>
-    <li>
-        <a href="login.html">login</a>
-    </li>
-    <li>
-        <a href="Form.html">form</a>
-    </li>
-    <li>
-        <a href="secure/index.html">secure</a>
-    </li>
+<ul class="nav nav-pills">
+    <li class="active"><a href="#/welcome">Welcome</a></li>
+    <li><a href="#/main">Main</a></li>
+    <li><a href="#/admin">Admin</a></li>
 </ul>
+<div ng-view></div>
 </body>
 </html>
