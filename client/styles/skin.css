@@ -54,21 +54,10 @@ div.datepicker.input-prepend>button.btn{
 	border-top-left-radius: 4px;
 }
 
-.dropzone {
-  width: 412px;
-  height: 200px;
-  border: 1px solid #ccc;
-  text-align: center;
-  font-family: Arial, serif;
-  position:absolute;
-}
-
-.file-name {
-   font-family: Arial, serif;
-}
 /* Time directive */
 span.time-directive{
 	display: inline-block;
+	direction: ltr;
 }
 span.time-directive input[type='text']{
 	width:20px;
@@ -96,9 +85,28 @@ div.time-input-container>button:last-child{
 	border-radius: 0 0 4px 4px;
 }
 div.time-input-container>.btn>span{
-	margin-top: 3px;
+	margin-top: 2px;
 }
 /* Time directive END*/
+
+/* Dropdown directive */						/***/
+span.dropdown-directive{							/***/
+	display: inline-block;						/***/
+	direction:rtl;								/***/
+}												/***/
+span.dropdown-directive button.btn{				/***/
+	border-radius: 4px 0 0 4px;					/***/
+}												/***/
+span.dropdown-directive button.btn:first-child{	/***/
+	border-radius: 0 4px 4px 0;					/***/
+	margin-left: -1px;							/***/
+	width:32px;									/***/
+}												/***/
+span.dropdown-directive ul{						/***/
+	width: 100%;								/***/
+	direction:ltr;								/***/
+}												/***/
+/* Dropdown directive END */
 
 .horizontal-flip{
 	transform: rotate(180deg);

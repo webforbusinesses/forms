@@ -16,7 +16,7 @@
 
 		<div class ="form-container heb" ng-controller="MyHebForm">
 		
-			<h3>דו"ח עבור - {{fields[0].content}} {{fields[1].content}}  >> {{fields[5].selected}}</h3>
+			<h3>דו"ח עבור - {{fields[0].content}} {{fields[1].content}}</h3>
 			<form>
 				<div ng-repeat="field in fields" ng-switch on="field.type" class="field-container"> 
 					
@@ -26,7 +26,8 @@
 					<checkboxses ng-switch-when="checkboxses" fieldname='field.fieldname' data-toggle="buttons-radio" model='field.selected' options='field.options'></checkboxses>
 					<image-container ng-switch-when="image" fieldname='field.fieldname' file-dropzone="[image/png, image/jpeg, image/gif]" file="fields[7].image" file-name="fields[7].imageFileName" data-max-file-size="10"></image-container>
 					<date ng-switch-when="date" fieldname='field.fieldname' model='field.date'></date>
-					<time ng-switch-when="time" fieldname='field.fieldname' model='field.time'></date>
+					<time ng-switch-when="time" fieldname='field.fieldname' model='field.time'></time>
+					<dropdown ng-switch-when="dropdown" fieldname='field.fieldname' selected='field.selected' options='field.options'></dropdown>
 					
 				</div>
 			</form>
@@ -45,6 +46,8 @@
 					<long-text ng-switch-when="longtextfield" fieldname='field.fieldname' placeholder='field.placeholder' model='field.content'></long-text>
 					<buttons-radio ng-switch-when="radiobuttons" fieldname='field.fieldname' data-toggle="buttons-radio" model='field.selected' options='field.options'></buttons-radio>
 					<checkboxses ng-switch-when="checkboxses" fieldname='field.fieldname' data-toggle="buttons-radio" model='field.selected' options='field.options'></checkboxses>
+					<time ng-switch-when="time" fieldname='field.fieldname' model='field.time'></time>
+					<dropdown ng-switch-when="dropdown" fieldname='field.fieldname' selected='field.selected' options='field.options'></dropdown>
 					
 				</div>
 			</form>

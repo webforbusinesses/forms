@@ -10,8 +10,7 @@
             return {
                 restrict: 'E',
                 scope: scope ? scope : { model: '=', placeholder: '=', fieldname: '='},
-                controller: ctrl ? ctrl : function () {
-                },
+                controller: ctrl ? ctrl : function () {},
                 template: label + template
             };
         };
@@ -37,6 +36,30 @@
     var radiobuttonsCtrl = function ($scope) {
         $scope.activate = function (option) {
             $scope.model = option;
+        };
+    };
+	
+	// Dropdown
+	///////////////////////////
+	
+	var dropdownTemplate = '<span class="dropdown-directive">' +
+									'<span class="dropdown">' +
+										'<button class="dropdown-toggle btn handle">' +
+											'<span class="caret"></span>' + 
+										'</button>' +
+										'<button class="dropdown-toggle btn">' +
+											'{{selected}}' +
+										'</button>' + 
+										'<ul class="dropdown-menu">' +
+											'<li ng-repeat="choice in options">' +
+												'<a ng-click="select(choice)")>{{choice}}</a>' +
+											'</li>' +
+										'</ul>' +
+									'</span>' +
+							'</span>';
+	var dropdownCtrl = function ($scope) {
+        $scope.select = function (choice) {
+            $scope.selected = choice;
         };
     };
 
@@ -95,13 +118,13 @@
 	
 	var timeTemplate = '<span class="time-directive">' +
 		'<div class="time-input-container">' + 
-			'<button class="btn" ng-click="addSecond()"><span class="caret horizontal-flip"/></button><input type="text" class="time" ng-model="model.seconds"/>' +
+			'<button class="btn" ng-click="addSecond()"><span class="caret horizontal-flip"/></button><input type="text" class="time" ng-model="model.hours"/>' +
 			'<button class="btn" ng-click="subSecond()"><span class="caret"/></button></div>:' +
 		'<div class="time-input-container">' +
 			'<button class="btn" ng-click="addMinute()"><span class="caret horizontal-flip"/></button><input type="text" class="time" ng-model="model.minutes"/>' +
 			'<button class="btn" ng-click="subMinute()"><span class="caret"/></button></div>:' +
 		'<div class="time-input-container">' +
-			'<button class="btn" ng-click="addHour()"><span class="caret horizontal-flip"/></button><input type="text" class="time" ng-model="model.hours"/>' +
+			'<button class="btn" ng-click="addHour()"><span class="caret horizontal-flip"/></button><input type="text" class="time" ng-model="model.seconds"/>' +
 			'<button class="btn" ng-click="subHour()"><span class="caret"/></button></div>' + 
 			'</span>';
 	
@@ -168,6 +191,7 @@
         .directive('buttonsRadio', formDirectiveFactory(radiobuttonsTemplate, { model: '=', options: '=', fieldname: '='}, radiobuttonsCtrl))
         .directive('checkboxses', formDirectiveFactory(checkboxsTemplate, { model: '=', options: '=', fieldname: '='}, checkboxsCtrl))
         .directive('date', formDirectiveFactory(dateTemplate, {model: '=', fieldname: '='}, dateCtrl))
+        .directive('dropdown', formDirectiveFactory(dropdownTemplate, {selected: '=', options: '=', fieldname: '='}, dropdownCtrl))
         .directive('time', formDirectiveFactory(timeTemplate, {model: '=', fieldname: '='}, timeCtrl));
     // ToDo use http://www.dropzonejs.com/
 
