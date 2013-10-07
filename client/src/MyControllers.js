@@ -9,8 +9,8 @@
             {type: "longtextfield", fieldname: "קורות חיים", placeholder: "הזן קורות חיים..."},
             {type: "radiobuttons", fieldname: "השכלה", options: ["יסודית", "תיכונית", "תואר ראשון", "תואר שני", "דוקטורט"], selected: "תואר ראשון"},
             {type: "checkboxses", fieldname: "תחביבים", options: ["כדורסל", "כדורגל", "קריאה", "משחקי מחשב"], selected: {"קריאה": true, "משחקי מחשב": true}},
-            {type: "date", fieldname: "תאריך", date: (new Date()).setDate((new Date()).getDate() - 1)},
-            {type: "time", fieldname: "שעה", time: {hours:1, minutes:2,seconds:54}},
+            {type: "time", fieldname: "זמן", time: {hours:1, minutes:2,seconds:54}},
+            {type: "time2", fieldname: "שעה", time: "16:54"},
             {type: "dropdown", fieldname: "גיל", options: ["0-10","11-20","21-31","31-41","41-51","51-65","+65"], selected: "11-20"}
         ];
     });
@@ -23,6 +23,7 @@
             {type: "radiobuttons", fieldname: "Education", options: ["Elementry", "High scool", "First degree", "Master", "Doctor"], selected: "Elementry"},
             {type: "checkboxses", fieldname: "Hobbies", options: ["Basketball", "Soccer", "Reading", "Computer games"], selected: {"Computer games": true}},
 			{type: "time", fieldname: "Time", time: {hours:1, minutes:2,seconds:54}},
+			{type: "time2", fieldname: "Hour", time: "16:54"},
             {type: "dropdown", fieldname: "Age", options: ["0-10","11-20","21-31","31-41","41-51","51-65","+65"], selected: "11-20"}
         ];
     });

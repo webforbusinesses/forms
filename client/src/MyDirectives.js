@@ -81,41 +81,9 @@
             }
         };
     };
-
-
-    // Date
-    ///////////////////////////
-    // AngularJs bug - the date directive requires jQuery (jQlite just isn't enouth)
-    var dateTemplate = '<div class="form-horizontal datepicker input-prepend">' +
-        '<input class="datepicker-input" type="text" datepicker-popup="dd-MMMM-yyyy" ng-model="model" open="opened" datepicker-options="dateOptions"/>' +
-        '<button class="btn" ng-click="open()"><i class="icon-calendar"></i></button>' +
-        '</div>';
-
-    var dateCtrl = function ($scope, $timeout) {
-        $scope.today = function () {
-            $scope.model = new Date();
-        };
-        $scope.opened = false;
-        $scope.clear = function () {
-            $scope.model = null;
-        };
-        $scope.toggleWeeks = function () {
-            $scope.showWeeks = !$scope.showWeeks;
-        };
-        $scope.open = function () {
-            $timeout(function () {
-                $scope.opened = true;
-            });
-        };
-        $scope.dateOptions = {
-            'year-format': "'yy'",
-            'starting-day': 1
-        };
-    };
 	
 	// Time
     ///////////////////////////
-	
 	var timeTemplate = '<span class="time-directive">' +
 		'<div class="time-input-container">' + 
 			'<button class="btn" ng-click="addHour()"><span class="caret horizontal-flip"/></button><input type="text" class="time" ng-model="model.hours"/>' +
@@ -184,15 +152,45 @@
             return format($scope.model.hours) + ":" +format($scope.model.minutes) + ":" +format($scope.model.seconds);
         };
     };
+	
+	// Time 2
+    ///////////////////////////
+	var time2Template = '<span>' +
+							'<span class="dropdown time-dropdown">' +
+								'<input type="text" class="dropdown-toggle" ng-model="model"\>' +
+								'<ul class="dropdown-menu">' +
+									'<li ng-repeat="opt in timeOptions()">' +
+										'<a ng-click="select(opt)")>{{opt}}</a>' +
+									'</li>' +
+								'</ul>' +
+							'</span>' +
+						'</span>';
+	var time2Ctrl = function ($scope) {
+        var format = function(x){
+			return x<10 ? "0"+x : x;
+		}
+		$scope.select = function (time) {
+            $scope.model = time;
+        };
+		$scope.timeOptions = function(){
+			var arr = [];
+			for(var i=$scope.bottom;i<$scope.top; i+=$scope.delta){
+				var mm = i%60;
+				var hh = (i - i%60)/60;
+				arr.push(format(hh) + ":" + format(mm));
+			}
+			return arr;
+		};
+    };
 
     angular.module('formDirectivs', ['ui.bootstrap'])
 		.directive('shortText', formDirectiveFactory(shortTextTemplate))
         .directive('longText', formDirectiveFactory(longTextTemplate))
         .directive('buttonsRadio', formDirectiveFactory(radiobuttonsTemplate, { model: '=', options: '=', fieldname: '='}, radiobuttonsCtrl))
         .directive('checkboxses', formDirectiveFactory(checkboxsTemplate, { model: '=', options: '=', fieldname: '='}, checkboxsCtrl))
-        .directive('date', formDirectiveFactory(dateTemplate, {model: '=', fieldname: '='}, dateCtrl))
         .directive('dropdown', formDirectiveFactory(dropdownTemplate, {selected: '=', options: '=', fieldname: '='}, dropdownCtrl))
-        .directive('time', formDirectiveFactory(timeTemplate, {model: '=', fieldname: '='}, timeCtrl));
+        .directive('time', formDirectiveFactory(timeTemplate, {model: '=', fieldname: '='}, timeCtrl))
+        .directive('time2', formDirectiveFactory(time2Template, {model:'=', fieldname:'=', bottom:'=', top:'=', delta:'='}, time2Ctrl));
     // ToDo use http://www.dropzonejs.com/
 
 })();

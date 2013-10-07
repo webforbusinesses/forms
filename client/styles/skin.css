@@ -26,13 +26,11 @@ div.field-container{
 
 div.form-container input[type='text']{
 	margin-bottom:0;
-	width:400px;
 }
 
 div.form-container textarea[type='text']{
 	vertical-align: top;
 	margin-bottom: 0;
-	width: 400px;
 	height: 100px;
 	resize: none;
 }
@@ -106,7 +104,16 @@ span.dropdown-directive ul{						/***/
 	width: 100%;								/***/
 	direction:ltr;								/***/
 }												/***/
+ul.dropdown-menu{								/***/
+	max-height: 300px;							/***/
+	overflow-y: auto;							/***/
+	min-width: 100%;							/***/
+}												/***/
 /* Dropdown directive END */
+
+.time-dropdown{
+	display:inherit;
+}
 
 .horizontal-flip{
 	transform: rotate(180deg);
