@@ -48,7 +48,7 @@
 											'<span class="caret"></span>' + 
 										'</button>' +
 										'<button class="dropdown-toggle btn">' +
-											'{{selected}}' +
+											'{{model}}' +
 										'</button>' + 
 										'<ul class="dropdown-menu">' +
 											'<li ng-repeat="choice in options">' +
@@ -59,7 +59,7 @@
 							'</span>';
 	var dropdownCtrl = function ($scope) {
         $scope.select = function (choice) {
-            $scope.selected = choice;
+            $scope.model = choice;
         };
     };
 	var dropdownLinker = function(s,el){
@@ -197,8 +197,8 @@
         .directive('longText', formDirectiveFactory({template:longTextTemplate}))
         .directive('buttonsRadio', formDirectiveFactory({template:radiobuttonsTemplate, scope:{ model: '=', options: '=', fieldname: '='}, ctrl:radiobuttonsCtrl}))
         .directive('checkboxses', formDirectiveFactory({template:checkboxsTemplate, scope:{ model: '=', options: '=', fieldname: '='}, ctrl:checkboxsCtrl}))
-        .directive('dropdown', formDirectiveFactory({template:dropdownTemplate, scope:{selected: '=', options: '=', fieldname: '='}, ctrl:dropdownCtrl, link:dropdownLinker}))
-        .directive('time', formDirectiveFactory({template:timeTemplate, scope:{model: '=', fieldname: '='}, ctrl:timeCtrl}))
+        .directive('dropdown', formDirectiveFactory({template:dropdownTemplate, scope:{model: '=', options: '=', fieldname: '='}, ctrl:dropdownCtrl, link:dropdownLinker}))
+        .directive('time', formDirectiveFactory({template:timeTemplate, ctrl:timeCtrl}))
         .directive('hour', formDirectiveFactory({template:hourTemplate, scope:{model:'=', fieldname:'=', bottom:'=', top:'=', delta:'='}, ctrl:hourCtrl, link:hourLinker}));
     // ToDo use http://www.dropzonejs.com/
 
