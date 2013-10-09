@@ -162,7 +162,7 @@
 	// Hour
     ///////////////////////////
 	var hourTemplate = '<span class="dropdown">' +
-							'<input type="text" class="dropdown-toggle" ng-model="model"\>' +
+							'<input type="text" class="dropdown-toggle" ng-model="model" />' +
 							'<ul class="dropdown-menu">' +
 								'<li ng-repeat="opt in timeOptions()">' +
 									'<a ng-click="select(opt)")>{{opt}}</a>' +
@@ -172,7 +172,7 @@
 	var hourCtrl = function ($scope) {
         var format = function(x){
 			return x<10 ? "0"+x : x;
-		}
+		};
 		$scope.select = function (hour) {
             $scope.model = hour;
         };
