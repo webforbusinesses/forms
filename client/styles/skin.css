@@ -40,61 +40,61 @@ div.btn-group, div.form-horizontal>*{
 }
 
 /* Time directive */
-span.time-directive{
-	display: inline-block;
-	direction: ltr;
-}
-span.time-directive input[type='text']{
-	width:20px;
-	text-align:center;
-	display: block;
-	margin-top: -2px;
-	border-radius:0;
-	-webkit-box-shadow:none;
-	-box-shadow:none;
-}
-div.time-input-container{
-	display: inline-block;
-	vertical-align: middle;
-	margin: 0 2px;
-}
-div.time-input-container>button{
-	width: 34px;
-	height: 16px;
-}
-div.time-input-container>button:first-child{
-	border-radius: 4px 4px 0 0;
-}
-div.time-input-container>button:last-child{
-	margin-top: -8px;
-	border-radius: 0 0 4px 4px;
-}
-div.time-input-container>.btn>span{
-	margin-top: 2px;
-}
+span.time-directive{										/***/
+	display: inline-block;								/***/
+	direction: ltr;										/***/
+}														/***/
+span.time-directive input[type='text']{					/***/
+	width:20px;											/***/
+	text-align:center;									/***/
+	display: block;										/***/
+	margin-top: -2px;									/***/
+	border-radius:0;									/***/
+	-webkit-box-shadow:none;							/***/
+	-box-shadow:none;									/***/
+}														/***/
+.time-directive .time-input-container{					/***/
+	display: inline-block;								/***/
+	vertical-align: middle;								/***/
+	margin: 0 2px;										/***/
+}														/***/
+.time-directive .time-input-container>button{				/***/
+	width: 34px;										/***/
+	height: 16px;										/***/
+}														/***/
+.time-directive .time-input-container>button:first-child{	/***/
+	border-radius: 4px 4px 0 0;							/***/
+}														/***/
+.time-directive .time-input-container>button:last-child{	/***/
+	margin-top: -8px;									/***/
+	border-radius: 0 0 4px 4px;							/***/
+}														/***/
+.time-directive .time-input-container>.btn>span{			/***/
+	margin-top: 2px;									/***/
+}														/***/
 /* Time directive END*/
 
 /* Dropdown directive */						
-span.dropdown-directive{							/***/
-	display: inline-block;						/***/
-	direction:rtl;								/***/
-}												/***/
-span.dropdown-directive button.btn{				/***/
-	border-radius: 4px 0 0 4px;					/***/
-}												/***/
-span.dropdown-directive button.btn:first-child{	/***/
-	border-radius: 0 4px 4px 0;					/***/
-	margin-left: -1px;							/***/
-	width:32px;									/***/
-}												/***/
-span.dropdown-directive ul{						/***/
-	direction:ltr;								/***/
-}												/***/
-.dropdown .dropdown-menu{						/***/
-	max-height: 300px;							/***/
-	overflow-y: auto;							/***/
-	min-width: 0px;								/***/
-}												/***/
+span.dropdown-directive{									/***/
+	display: inline-block;								/***/
+	direction:rtl;										/***/
+}														/***/
+span.dropdown-directive button.btn{						/***/
+	border-radius: 4px 0 0 4px;							/***/
+}														/***/
+span.dropdown-directive button.btn:first-child{			/***/
+	border-radius: 0 4px 4px 0;							/***/
+	margin-left: -1px;									/***/
+	width:32px;											/***/
+}														/***/
+span.dropdown-directive ul{								/***/
+	direction:ltr;										/***/
+}														/***/
+.dropdown .dropdown-menu{								/***/
+	max-height: 300px;									/***/
+	overflow-y: auto;									/***/
+	min-width: 0px;										/***/
+}														/***/
 /* Dropdown directive END */
 
 .horizontal-flip{
