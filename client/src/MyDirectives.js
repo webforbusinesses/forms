@@ -4,14 +4,15 @@
 
     // Directive Factory
     ///////////////////////////
-    var formDirectiveFactory = function (template, scope, ctrl) {
+    var formDirectiveFactory = function (template, scope, ctrl, link) {
         var label = "<div class='field-header'>{{fieldname}}:</div>";
         return function () {
             return {
                 restrict: 'E',
                 scope: scope ? scope : { model: '=', placeholder: '=', fieldname: '='},
                 controller: ctrl ? ctrl : function () {},
-                template: label + template
+                template: label + template,
+				link: link
             };
         };
     };
@@ -62,6 +63,12 @@
             $scope.selected = choice;
         };
     };
+	var dropdownLinker = function(s,el){
+		el.find(".dropdown-toggle").focus(function(){
+			var handles = el.find(".dropdown-toggle");
+			el.find(".dropdown-menu").width(handles.first().outerWidth() + handles.last().outerWidth());
+		});
+	};
 
     // Checkboxes
     ///////////////////////////
@@ -155,15 +162,13 @@
 	
 	// Time 2
     ///////////////////////////
-	var time2Template = '<span>' +
-							'<span class="dropdown time-dropdown">' +
-								'<input type="text" class="dropdown-toggle" ng-model="model"\>' +
-								'<ul class="dropdown-menu">' +
-									'<li ng-repeat="opt in timeOptions()">' +
-										'<a ng-click="select(opt)")>{{opt}}</a>' +
-									'</li>' +
-								'</ul>' +
-							'</span>' +
+	var time2Template = '<span class="dropdown time-dropdown">' +
+							'<input type="text" class="dropdown-toggle" ng-model="model"\>' +
+							'<ul class="dropdown-menu">' +
+								'<li ng-repeat="opt in timeOptions()">' +
+									'<a ng-click="select(opt)")>{{opt}}</a>' +
+								'</li>' +
+							'</ul>' +
 						'</span>';
 	var time2Ctrl = function ($scope) {
         var format = function(x){
@@ -182,15 +187,20 @@
 			return arr;
 		};
     };
+	var time2Linker = function(s,el){
+		el.find("input").focus(function(){
+			el.find(".dropdown-menu").width($(this).outerWidth());
+		});
+	};
 
     angular.module('formDirectivs', ['ui.bootstrap'])
 		.directive('shortText', formDirectiveFactory(shortTextTemplate))
         .directive('longText', formDirectiveFactory(longTextTemplate))
         .directive('buttonsRadio', formDirectiveFactory(radiobuttonsTemplate, { model: '=', options: '=', fieldname: '='}, radiobuttonsCtrl))
         .directive('checkboxses', formDirectiveFactory(checkboxsTemplate, { model: '=', options: '=', fieldname: '='}, checkboxsCtrl))
-        .directive('dropdown', formDirectiveFactory(dropdownTemplate, {selected: '=', options: '=', fieldname: '='}, dropdownCtrl))
+        .directive('dropdown', formDirectiveFactory(dropdownTemplate, {selected: '=', options: '=', fieldname: '='}, dropdownCtrl, dropdownLinker))
         .directive('time', formDirectiveFactory(timeTemplate, {model: '=', fieldname: '='}, timeCtrl))
-        .directive('time2', formDirectiveFactory(time2Template, {model:'=', fieldname:'=', bottom:'=', top:'=', delta:'='}, time2Ctrl));
+        .directive('time2', formDirectiveFactory(time2Template, {model:'=', fieldname:'=', bottom:'=', top:'=', delta:'='}, time2Ctrl, time2Linker));
     // ToDo use http://www.dropzonejs.com/
 
 })();
