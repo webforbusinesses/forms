@@ -47,7 +47,7 @@
 										'<button class="dropdown-toggle btn handle">' +
 											'<span class="caret"></span>' + 
 										'</button>' +
-										'<button class="dropdown-toggle btn">' +
+										'<button class="btn">' +
 											'{{model}}' +
 										'</button>' + 
 										'<ul class="dropdown-menu">' +
@@ -62,10 +62,55 @@
             $scope.model = choice;
         };
     };
-	var dropdownLinker = function(s,el){
+	var dropdownLinker = function($scope,el){
+		dropdownEventBinder(el, el.find("button"), function(activeText){
+			$scope.model = activeText;
+			$scope.$digest();
+		});
+	};
+	
+	var dropdownEventBinder = function(el, widthAsSelector, onEnter){
+		el.find("ul").click(function(ev){
+			el.find("li").removeClass("active");
+			$(ev.target).closest("li").addClass("active");
+		});
 		el.find(".dropdown-toggle").focus(function(){
-			var handles = el.find(".dropdown-toggle");
-			el.find(".dropdown-menu").width(handles.first().outerWidth() + handles.last().outerWidth());
+			var width = 0;
+			$.each(el.find(widthAsSelector), function(){
+				width += $(this).outerWidth();
+			});
+			el.find(".dropdown-menu").width(width);
+		});
+		el.find(".dropdown-toggle").keydown(function(ev){
+			if(el.find("ul").css("display") !== "none"){
+				var active = el.find("li.active");
+				if(ev.keyCode === 13 && active.length){
+					onEnter(active.find("a").text());
+				}
+				if(ev.keyCode === 40 || ev.keyCode === 38){
+					ev.preventDefault();
+					if(ev.keyCode === 40){
+						el.find("li").removeClass("active");
+						if(active.length === 0 || active.next("li").length === 0) {
+							active = el.find("li:first").addClass("active");
+						} else {
+							active = active.last().next().addClass("active");
+						}
+						el.find("ul").scrollTop(active.height()*(active.index()+0.5) - el.find("ul").height()/2);
+					}
+					if(ev.keyCode === 38){
+						el.find("li").removeClass("active");
+						if(active.length === 0 || active.prev("li").length === 0) {
+							active = el.find("li:last").addClass("active");
+						} else {
+							active = active.last().prev().addClass("active");
+						}
+					}
+					el.find("ul").scrollTop(active.height()*(active.index()+0.5) - el.find("ul").height()/2);
+				}
+			} else if(ev.keyCode === 40 || ev.keyCode === 38){
+				el.find(".dropdown-toggle").click();
+			}
 		});
 	};
 
@@ -186,9 +231,10 @@
 			return arr;
 		};
     };
-	var hourLinker = function(s,el){
-		el.find("input").focus(function(){
-			el.find(".dropdown-menu").width($(this).outerWidth());
+	var hourLinker = function($scope,el){
+		dropdownEventBinder(el, ".dropdown-toggle", function(activeText){
+			$scope.model = activeText;
+			$scope.$digest();
 		});
 	};
 
