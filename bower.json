@@ -19,6 +19,7 @@
         "bower-bootstrap-css": "*",
         "jquery": "git://github.com/components/jquery.git#v1.10.2",
         "angular": "~1.0.8",
-        "angular-mocks": "~1.0.8"
+        "angular-mocks": "~1.0.8",
+		"dropzone":"*"
     }
 }

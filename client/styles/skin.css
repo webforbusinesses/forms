@@ -97,6 +97,18 @@ span.dropdown-directive ul{								/***/
 }														/***/
 /* Dropdown directive END */
 
+.file-upload{
+	width: 200px;
+	height:200px;
+	background: pink;
+	display:inline-block;
+}
+.file-upload .drop-spot{
+	position:absolute;
+	width: 100%;
+	height: 100%;
+}
+
 .horizontal-flip{
 	transform: rotate(180deg);
 	-webkit-transform: rotate(180deg);

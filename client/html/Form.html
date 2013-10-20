@@ -5,6 +5,7 @@
 		<script src="../vendor/jquery/jquery.js"></script>
 		<script src="../vendor/angular/angular.min.js"></script>
 		<script src="../vendor/angular-ui-bootstrap-bower/ui-bootstrap-tpls.min.js"></script>
+		<script src="../vendor/dropzone/downloads/dropzone.js"></script>
 		<script src="../src/MyDirectives.js"></script>
 		<script src="../src/MyControllers.js"></script>
 		<link rel="stylesheet" TYPE="text/css" href="../styles/skin.css">
@@ -29,6 +30,7 @@
 					<time ng-switch-when="time" fieldname='field.fieldname' model='field.time'></time>
 					<hour ng-switch-when="hour" fieldname='field.fieldname' model='field.time' bottom='0' top='24*60' delta='30'></hour>
 					<dropdown ng-switch-when="dropdown" fieldname='field.fieldname' model='field.selected' options='field.options'></dropdown>
+					<file-upload ng-switch-when="fileUpload" fieldname='field.fieldname'></file-upload>
 					
 				</div>
 			</form>

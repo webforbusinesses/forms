@@ -11,7 +11,8 @@
             {type: "checkboxses", fieldname: "תחביבים", options: ["כדורסל", "כדורגל", "קריאה", "משחקי מחשב"], selected: {"קריאה": true, "משחקי מחשב": true}},
             {type: "time", fieldname: "זמן", time: {hours:1, minutes:2,seconds:54}},
             {type: "hour", fieldname: "שעה", time: "16:54"},
-            {type: "dropdown", fieldname: "גיל", options: ["0-10","11-20","21-31","31-41","41-51","51-65","+65"], selected: "11-20"}
+            {type: "dropdown", fieldname: "גיל", options: ["0-10","11-20","21-31","31-41","41-51","51-65","+65"], selected: "11-20"},
+			{type: "fileUpload", fieldname: "תמונה"}
         ];
     });
 

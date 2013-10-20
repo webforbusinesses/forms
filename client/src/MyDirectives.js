@@ -237,6 +237,14 @@
 			$scope.$digest();
 		});
 	};
+	
+	var fileUploadTemplate = "<div class='file-upload'><div class='drop-spot'></div></div>";
+	var fileUploadLinker = function($scope,el){
+		$(el).find(".drop-spot").dropzone({url: "url: /file/post",createImageThumbnails:true})
+		.on("addedfile",(function(file) {
+			var bobo = 0;
+		}));
+	};
 
     angular.module('formDirectivs', ['ui.bootstrap'])
 		.directive('shortText', formDirectiveFactory({template:shortTextTemplate}))
@@ -245,7 +253,8 @@
         .directive('checkboxses', formDirectiveFactory({template:checkboxsTemplate, scope:{ model: '=', options: '=', fieldname: '='}, ctrl:checkboxsCtrl}))
         .directive('dropdown', formDirectiveFactory({template:dropdownTemplate, scope:{model: '=', options: '=', fieldname: '='}, ctrl:dropdownCtrl, link:dropdownLinker}))
         .directive('time', formDirectiveFactory({template:timeTemplate, ctrl:timeCtrl}))
-        .directive('hour', formDirectiveFactory({template:hourTemplate, scope:{model:'=', fieldname:'=', bottom:'=', top:'=', delta:'='}, ctrl:hourCtrl, link:hourLinker}));
+        .directive('hour', formDirectiveFactory({template:hourTemplate, scope:{model:'=', fieldname:'=', bottom:'=', top:'=', delta:'='}, ctrl:hourCtrl, link:hourLinker}))
+		.directive('fileUpload',formDirectiveFactory({template:fileUploadTemplate, scope:{fieldname: '='}, link:fileUploadLinker}));
     // ToDo use http://www.dropzonejs.com/
 
 })();
