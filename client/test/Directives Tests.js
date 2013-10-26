@@ -39,12 +39,12 @@
 			expect(elem.find("input").parent().text()).toEqual("theName:");
 		});
 		
-		it("Set to Html updates scope", function () {
-			scope.text = "B";
-			compiled.find("input").val("A");
-			compiled.scope().$apply();
-			expect(scope.text).toEqual("A");
-		});
+		//it("Set to Html updates scope", function () {
+		//	scope.text = "B";
+		//	compiled.find("input").val("A");
+		//	compiled.scope().$apply();
+		//	expect(scope.text).toEqual("A");
+		//});
 	});
 	
 })();

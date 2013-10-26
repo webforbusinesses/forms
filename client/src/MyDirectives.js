@@ -240,10 +240,38 @@
 	
 	var fileUploadTemplate = "<div class='file-upload'><div class='drop-spot'></div></div>";
 	var fileUploadLinker = function($scope,el){
-		$(el).find(".drop-spot").dropzone({url: "url: /file/post",createImageThumbnails:true})
-		.on("addedfile",(function(file) {
-			var bobo = 0;
-		}));
+		$(el).find(".drop-spot").dropzone({
+			url: "url: /file/post",
+			previewTemplate:	'<div class="dz-preview dz-file-preview" style="display:table-cell;vertical-align:middle;">'+
+									'<div class="dz-details" style="text-align:center;">'+
+										'<div class="dz-filename" style="width:0;height:0;visibility:hidden"><span data-dz-name></span></div>'+
+										'<div class="dz-size" data-dz-errormessage data-dz-size style="width:0;height:0;visibility:hidden"></div>'+
+										'<img data-dz-thumbnail />'+
+									'</div>'+
+								'</div>',
+			createImageThumbnails:true,
+			resize:function(file){
+				var w = file.width;
+				var h = file.height;
+				var ret = {srcX:0, srcY:0, srcWidth:w, srcHeight:h};
+				var cw = $(this.element).width();
+				var ch = $(this.element).height();
+				var rat = cw/w < ch/h ? cw/w : ch/h;
+				w *= rat;
+				h *= rat;
+				ret.trgX=0;
+				ret.trgY=0;
+				ret.trgWidth=w;
+				ret.trgHeight=h;
+				return ret;
+			},
+			complete: function(file) {
+				if(this.files.length>1){
+					this.removeFile(this.files[0]);
+				}
+				console.log(this.files.length);
+			}
+		});
 	};
 
     angular.module('formDirectivs', ['ui.bootstrap'])
